@@ -6,7 +6,7 @@ class UartMeas:
         self.ser = ser
         self.fmt = "<IIIII" 
         self.rec_size = struct.calcsize(self.fmt)
-
+    # Reads and unpacks measurment struct, returns measurments, compression ratio and efficiency
     def fetch_and_parse(self):
         start = time.time()
         found = False
