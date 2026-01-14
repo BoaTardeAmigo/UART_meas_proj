@@ -8,7 +8,7 @@ class UartData:
     def send_initial_header(self, total_size):
         self.ser.write(struct.pack("<I", total_size))
         
-    #Sends/receives data block being compressed
+    #Sends/receives data block being compressed, measures round trip time
     def exchange_block(self, raw_chunk):       
         t_start = time.perf_counter()
         
