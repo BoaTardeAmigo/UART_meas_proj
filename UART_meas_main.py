@@ -9,12 +9,13 @@ from UART_comp_data import UartData
 from UART_comp_meas import UartMeas
 
 # --- CONFIGURATION ---
-RUN_COUNT = 5            
-SAVE_ALL_RUNS = True    
-PORT = "COM5"           
-BAUD = 38400            
+RUN_COUNT = 5            # Sets amount of runs to average
+SAVE_ALL_RUNS = True     # False - only save averages from runs, True - save all raw data
+PORT = "COM5"            # Select COM port
+BAUD = 38400             # Set baud rate
 # ---------------------
 
+# Generates .cvs report
 def save_benchmark_report(filepath, result_list, pc_times, stats):
     """
     Creates csv report.  
@@ -82,7 +83,8 @@ def save_benchmark_report(filepath, result_list, pc_times, stats):
         print(f"Report generated: {filepath}")
     except Exception as e:
         print(f"Error generating CSV: {e}")
-
+# Main function - responsible for overall UART communications and averaging
+# Also performs calculations for averaged data
 def run_benchmark(input_file):
     if not os.path.exists(input_file):
         print(f"Error: '{input_file}' not found."); return
@@ -135,7 +137,7 @@ def run_benchmark(input_file):
                     print(f"Error: Iteration {run+1} failed to receive data.")
                 iteration_result_total.append(run_tele)
                 
-                print(f"  Iteration {run+1}/{RUN_COUNT} complete...")
+                print(f" Iteration {run+1}/{RUN_COUNT} complete...")
 
             if not iteration_result_total or not iteration_result_total[0]:
                 print("Error: No data received.")
