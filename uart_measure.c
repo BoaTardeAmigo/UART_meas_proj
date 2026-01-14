@@ -11,7 +11,7 @@ static uart_measure_record_t records[UART_MEASURE_MAX_RECORDS];
 static uint16_t record_count = 0;
 
 static uint32_t comp_start_cycles = 0;
-static uint32_t cpu_hz = 72000000;
+static uint32_t cpu_hz = 72000000;    // set this to your cpu hz
 
 typedef struct {
     uint32_t block_id;
